@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schneider.Minefield", "Schneider.Minefield\Schneider.Minefield.csproj", "{CE1CC262-E9B6-488C-9AC8-160677D2AD5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schneider.Minefield.Core", "Schneider.Minefield.Core\Schneider.Minefield.Core.csproj", "{972C315C-E3D4-4361-9EAB-8DC3C521F52F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schneider.Minefile.Tests", "Schneider.Minefile.Tests\Schneider.Minefile.Tests.csproj", "{23624238-F77D-461B-8E85-7FDEE220C06B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CE1CC262-E9B6-488C-9AC8-160677D2AD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE1CC262-E9B6-488C-9AC8-160677D2AD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE1CC262-E9B6-488C-9AC8-160677D2AD5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE1CC262-E9B6-488C-9AC8-160677D2AD5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{972C315C-E3D4-4361-9EAB-8DC3C521F52F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{972C315C-E3D4-4361-9EAB-8DC3C521F52F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{972C315C-E3D4-4361-9EAB-8DC3C521F52F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{972C315C-E3D4-4361-9EAB-8DC3C521F52F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23624238-F77D-461B-8E85-7FDEE220C06B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23624238-F77D-461B-8E85-7FDEE220C06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23624238-F77D-461B-8E85-7FDEE220C06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23624238-F77D-461B-8E85-7FDEE220C06B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
