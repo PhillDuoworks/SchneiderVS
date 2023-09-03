@@ -1,31 +1,47 @@
 using Schneider.Minefield.Core.Model;
 using Schneider.Minefield.Core.Utilties;
+using Serilog;
 
 namespace Schneider.Minefield.Core;
 
 public class GameController : IGameController
 {
-    private Player _player;
-    private IGameBoard _gameBoard;
-    private IKeyboardReader _keyboardReader;
-    private IStateHandler _stateHandler;
+    private readonly Player _player;
+    private readonly IGameBoard _gameBoard;
+    private readonly IKeyboardReader _keyboardReader;
+    private readonly IGameEngine _gameEngine;
+    private readonly IGameDisplay _gameDisplay;
+    private readonly ILogger _logger;
 
-    public GameController(IGameBoard gameBoard, IKeyboardReader keyboardReader, IStateHandler stateHandler, int numberOfLives)
+    public GameController(IGameBoard gameBoard, IKeyboardReader keyboardReader, IGameEngine gameEngine, IGameDisplay gameDisplay, ILogger logger, int numberOfLives)
     {
         _player = new Player(gameBoard.GetStartLocation(), "Fred", numberOfLives);
         _gameBoard = gameBoard;
         _keyboardReader = keyboardReader;
-        _stateHandler = stateHandler;
+        _gameEngine = gameEngine;
+        _gameDisplay = gameDisplay;
+        _logger = logger;
     }
 
     public async Task Run(CancellationToken cancellationToken)
     {
-        _keyboardReader.OnPressed += (key) =>
-        {
-            _stateHandler.HandleInput(key, _player);
-            _stateHandler.UpdateGameState(_gameBoard, _player);
-        };
+        _logger.Debug("Registering keypress handler");
 
-        await _keyboardReader.Listen(cancellationToken);
+        try
+        {
+            _keyboardReader.OnPressed += (key) =>
+            {
+                _gameEngine.HandleInput(key, _player);
+                _gameEngine.ApplyGameRules(_gameBoard, _player);
+                _gameDisplay.Update(_gameEngine.StatusMessage);
+            };
+
+            await _keyboardReader.Listen(cancellationToken);
+
+        }
+        catch (Exception e)
+        {
+            _logger.Fatal(e,"Unrecoverable error has occured see exception for further details");
+        }
     }
 }

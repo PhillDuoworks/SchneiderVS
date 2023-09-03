@@ -9,9 +9,9 @@ namespace Schneider.Minefield.Tests.Model
         [Fact]
         public void ShouldBeAbleToConvertLocationIntoChessFormat()
         {
-            var location = new Location();
+            var location = new Location(1,1);
 
-            Assert.Equal("A1", location.ChessFormat());
+            Assert.Equal("B2", location.ChessFormat());
         }
 
         [Fact]

@@ -6,7 +6,7 @@ public interface IGameBoard
     int Height { get;}
 
     bool IsPlayerOnAMine(IPlayer player);
-    bool HasPlayerEscapedMinefield(IPlayer player);
     Location GetStartLocation();
 
+    void RemoveMine(Location playerLocation);
 }

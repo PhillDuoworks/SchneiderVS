@@ -10,7 +10,7 @@ public class GameBoard : IGameBoard
     public IList<Location> Mines { get; }
 
     private IKeyboardReader _keyboardReader;
-    private IStateHandler _stateHandler;
+    private IGameEngine _gameEngine;
 
     public GameBoard(int width, int height, int numberOfMines, IMineCreator? mineCreator)
     {
@@ -47,11 +47,6 @@ public class GameBoard : IGameBoard
         return Mines.Contains(player.Location);
     }
 
-    public bool HasPlayerEscapedMinefield(IPlayer player)
-    {
-        return player.Location.X >= Width || player.Location.Y >= Height;
-    }
-
     public Location GetStartLocation()
     {
         var rnd = new Random();
@@ -66,5 +61,8 @@ public class GameBoard : IGameBoard
         return startLocation;
     }
 
-
+    public void RemoveMine(Location location)
+    {
+        Mines.Remove(location);
+    }
 }
